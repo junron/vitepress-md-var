@@ -2,10 +2,10 @@
   "name": "vitepress-md-var",
   "version": "0.1.0",
   "description": "Adds editable variables to markdown code blocks",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "dev": "vitepress dev demo",
-    "build": "vitepress build demo"
+    "docs:dev": "vitepress dev demo",
+    "docs:build": "vitepress build demo"
   },
   "author": "junron",
   "license": "ISC",
