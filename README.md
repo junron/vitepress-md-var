@@ -1,17 +1,18 @@
 # VitePress Markdown Variables
 
 ## Demo
-https://github.com/user-attachments/assets/81a8d859-d089-44b1-ab88-3d84b1abf646
+<video controls="controls" src="https://github.com/user-attachments/assets/81a8d859-d089-44b1-ab88-3d84b1abf646"></video>
 
-See [./demo](./demo)
+Checkout the [demo](./demo) directory for a working example.
 
 ## Installation
-1. Create `.vitepress/theme/index.ts`
-2. Paste the following code  
+1. `npm install --save-dev vitepress-md-var` 
+2. Create `.vitepress/theme/index.ts`
+3. Paste the following code  
 ```typescript
 import DefaultTheme from 'vitepress/theme';
 import { useRoute } from 'vitepress';
-import mdVar from 'vitepress-md-var';  // TODO: actually publish this package
+import mdVar from 'vitepress-md-var';
 
 export default {
     ...DefaultTheme,
@@ -28,6 +29,8 @@ export default {
 
 ## Configuration
 
+Configuration can be passed as the second argument to the `mdVar` constructor. It should implement the interface shown below:
+
 ```typescript
 export interface MarkdownVariablesConfig {
     // Strings that start with this prefix are treated as variables
@@ -41,7 +44,10 @@ export interface MarkdownVariablesConfig {
 }
 ```
 
-### Example variable persistence
+### Variable persistence
+
+Implement the `storeVar` and `loadVar` functions to persist variables across pages.
+
 ```typescript
 export default {
   ...DefaultTheme,

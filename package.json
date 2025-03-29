@@ -2,18 +2,33 @@
   "name": "vitepress-md-var",
   "version": "0.1.0",
   "description": "Adds editable variables to markdown code blocks",
-  "main": "lib/index.js",
+  "main": "lib/index.ts",
   "scripts": {
     "docs:dev": "vitepress dev demo",
     "docs:build": "vitepress build demo"
   },
   "author": "junron",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/junron/vitepress-md-var.git"
+    "url": "git+https://github.com/junron/vitepress-md-var.git"
   },
   "devDependencies": {
     "vitepress": "^1.6.3"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [
+    "vitepress",
+    "vue",
+    "markdown",
+    "variable",
+    "placeholder",
+    "documentation"
+  ],
+  "bugs": {
+    "url": "https://github.com/junron/vitepress-md-var/issues"
+  },
+  "homepage": "https://github.com/junron/vitepress-md-var#readme"
 }
