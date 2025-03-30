@@ -24,6 +24,14 @@ function handleElement(elem: HTMLElement) {
     new RegExp(escapeRegExp(prefix) + "(\\w+)", "g"), (fullMatch, ...args) => {
       hasMdVar = true;
       let [varName, varPosition, ..._] = args;
+      if (globalConfig.noVarPrefix) {
+        const no_var_prefix = globalConfig.noVarPrefix;
+        if (fullMatch.startsWith(no_var_prefix)) {
+          return (
+            prefix + varName.substring(no_var_prefix.length - prefix.length)
+          );
+        }
+      }
       // If the item occurs at the start, it's probably not a variable
       if (varPosition == 0 || elem.innerText.indexOf(fullMatch) === 0) {
         return fullMatch;
@@ -35,14 +43,6 @@ function handleElement(elem: HTMLElement) {
       // Input variables probably don't start with underscore
       if (varName.startsWith("_")) {
         return fullMatch;
-      }
-      if (globalConfig.noVarPrefix) {
-        const no_var_prefix = globalConfig.noVarPrefix;
-        if (fullMatch.startsWith(no_var_prefix)) {
-          return (
-            prefix + varName.substring(no_var_prefix.length - prefix.length)
-          );
-        }
       }
       const count = (counters.get(varName) || 0) + 1;
       counters.set(varName, count);
