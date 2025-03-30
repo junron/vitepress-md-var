@@ -30,19 +30,3 @@ bloodyAD --host "$dc" -d "$domain" -u "$user" -p "$pass" set password "$target_u
 # With net rpc
 net rpc password "$target_user" -U "$domain"/"$user"%"$pass" -S "$domain"
 ```
-
-
-
-## Rule testing
-
-These should not be variables:
-```bash
-echo $true
-echo $false
-echo $null
-```
-
-`$output` should not be a variable:
-```bash
-$output = 1+1
-```

@@ -14,10 +14,15 @@ function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }
 
-function handleElement(elem) {
+function handleElement(elem: HTMLElement) {
   const prefix = globalConfig.prefix!!;
+  let hasMdVar = elem.hasAttribute("md-var");
+  if(hasMdVar) {
+    return;
+  }
   elem.innerHTML = elem.innerHTML.replace(
     new RegExp(escapeRegExp(prefix) + "(\\w+)", "g"), (fullMatch, ...args) => {
+      hasMdVar = true;
       let [varName, varPosition, ..._] = args;
       // If the item occurs at the start, it's probably not a variable
       if (varPosition == 0 || elem.innerText.indexOf(fullMatch) === 0) {
@@ -57,6 +62,9 @@ function handleElement(elem) {
       );
     }
   );
+  if(hasMdVar){
+    elem.setAttribute("md-var", "");
+  }
 }
 
 function initializeInput(element: HTMLInputElement) {
