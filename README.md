@@ -1,7 +1,7 @@
 # VitePress Markdown Variables
 
 ## Demo
-<video controls="controls" src="https://github.com/user-attachments/assets/81a8d859-d089-44b1-ab88-3d84b1abf646"></video>
+![demo](./img/style-default.gif)
 
 Checkout the [demo](./demo) directory for a working example.
 
@@ -64,3 +64,20 @@ export default {
   },
 };
 ```
+
+### Styling
+
+An alternative style is the "The Hacker Recipes" (THR) style, shown below:
+
+![THR styling](./img/style-thr.gif)
+
+You can specify it using the `styling` parameter:
+```typescript
+mdVar(route, {
+  styling: "thr"
+});
+```
+
+If you would like to use your own CSS instead, simply set `styling` to your CSS string.
+
+The default and THR themes are defined in [`config.ts`](./lib/config.ts)
