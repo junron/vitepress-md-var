@@ -1,6 +1,6 @@
 {
   "name": "vitepress-md-var",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Adds editable variables to markdown code blocks",
   "main": "lib/index.ts",
   "scripts": {
@@ -19,7 +19,9 @@
   "directories": {
     "lib": "lib"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "keywords": [
     "vitepress",
     "vue",
