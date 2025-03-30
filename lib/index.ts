@@ -2,6 +2,7 @@ import { nextTick, onMounted, watch } from "vue";
 import {
   defaultMarkdownVariablesConfig,
   MarkdownVariablesConfig,
+  styling
 } from "./config";
 
 const counters = new Map();
@@ -113,6 +114,7 @@ function initializeSpan(element: HTMLSpanElement) {
 }
 
 const refreshVars = () => {
+  const style = styling.get(globalConfig.styling!!.toLowerCase()) ?? globalConfig.styling;
   const inputStyle = document.createElement("style");
   inputStyle.innerHTML = `
     input.md-var-hidden {
@@ -123,21 +125,7 @@ const refreshVars = () => {
       white-space: pre;
       position: absolute;
     }
-    html:not(.dark) span.md-var{
-      color: #d01884 !important;
-      border-bottom: 1px dotted #d01884;
-    }
-    html.dark span.md-var{
-      color: #ff8bcb !important;
-      border-bottom: 1px dotted #ff8bcb;
-    }
-    input.md-var {
-      font: inherit;
-      background: white;
-      color: black;
-      padding: 1px;
-    }
-  `;
+    ` + style;
   for (const elem of document.querySelectorAll("code")) {
     handleElement(elem);
   }
