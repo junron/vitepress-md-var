@@ -10,7 +10,10 @@ export default {
   setup() {
     const route = useRoute();
     mdVar(route, {
-      loadVar: (varName) => localStorage.getItem("MD_" + varName),
+      loadVar: (varName) => {
+        if(varName == "XSS_TEST") return "<img src=x>";
+        return localStorage.getItem("MD_" + varName)
+      },
       storeVar: (varName, varVal) =>
         localStorage.setItem("MD_" + varName, varVal),
     });

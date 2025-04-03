@@ -13,6 +13,10 @@ export default defineConfig({
         text: "Rule test",
         link: "/rule-test.html",
       },
+      {
+        text: "XSS test",
+        link: "/xss-test.html",
+      },
     ],
   },
 });

@@ -14,6 +14,14 @@ function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }
 
+function HtmlEncode(s)
+{
+  var el = document.createElement("div");
+  el.innerText = el.textContent = s;
+  s = el.innerHTML;
+  return s;
+}
+
 function handleElement(elem: HTMLElement) {
   const prefix = globalConfig.prefix!!;
   let hasMdVar = elem.hasAttribute("md-var");
@@ -55,7 +63,7 @@ function handleElement(elem: HTMLElement) {
           }
         }
       }
-      const displayValue = varValues.get(varName);
+      const displayValue = HtmlEncode(varValues.get(varName));
       return (
         `<span class='md-var md-var-${varName}' id='md-var-span-${varName}-${count}'>${displayValue}</span>` +
         `<input class='md-var md-var-hidden md-var-${varName}' id='md-var-input-${varName}-${count}' autocomplete=off value='${displayValue}'>`
