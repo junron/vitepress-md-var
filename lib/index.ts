@@ -204,6 +204,7 @@ const mdVar = (
       nextTick(refreshVars).catch();
     }
   );
+  nextTick(refreshVars).catch();
   globalConfig = { ...defaultMarkdownVariablesConfig, ...config };
 };
 export default mdVar;
