@@ -130,6 +130,10 @@ function initializeSpan(element: HTMLSpanElement) {
 }
 
 const refreshVars = () => {
+  if(typeof window === 'undefined'){
+    // Skip if not in browser
+    return;
+  }
   const style = styling.get(globalConfig.styling!!.toLowerCase()) ?? globalConfig.styling;
   const inputStyle = document.createElement("style");
   inputStyle.innerHTML = `
